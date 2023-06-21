@@ -16,7 +16,7 @@ function App() {
 
   const fetchBotResponse = async () => {
     const { data } = await axios.post(
-      "https://chatgpt-app-7l23.onrender.com/",
+      "https://chatgpt-app-7l23.onrender.com",
       {
         input: input,
       },
