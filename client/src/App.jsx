@@ -4,10 +4,6 @@ import send from "./assets/send.svg";
 import user from "./assets/user.png";
 import bot from "./assets/bot.png";
 import loadingIcon from "./assets/loader.svg";
-// let arr = [
-//   { type: "user", post: "fjdfbjhdbhjdf" },
-//   { type: "bot", post: "fjdfbjhdbhjdf" },
-// ];
 
 function App() {
   const [input, setInput] = useState("");
@@ -118,13 +114,6 @@ function App() {
               )}
             </div>
           ))}
-
-          {/* <div className="chat-bubble bot">
-            <div className="avatar">
-              <img src={bot} alt="" />
-            </div>
-            <div className="post">lorem ipsum gdht jfhdf</div>
-          </div> */}
         </div>
       </section>
       <footer>
