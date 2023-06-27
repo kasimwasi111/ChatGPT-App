@@ -1,9 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+
 import send from "./assets/send.svg";
 import user from "./assets/user.png";
 import bot from "./assets/bot.png";
 import loadingIcon from "./assets/loader.svg";
+
+// let arr = [
+//     { type: "user", post: "fafafafdfas" },
+//     { type: "bot", post: "fafafafdfas" },
+// ];
 
 function App() {
   const [input, setInput] = useState("");
@@ -16,16 +22,15 @@ function App() {
 
   const fetchBotResponse = async () => {
     const { data } = await axios.post(
-      "https://chatgpt-app-7l23.onrender.com",
-      {
-        input: input,
-      },
+      "https://chatgpt-app-3nym.onrender.com",
+      { input },
       {
         headers: {
           "Content-Type": "application/json",
         },
       }
     );
+
     return data;
   };
 
@@ -63,19 +68,15 @@ function App() {
       } else {
         clearInterval(interval);
       }
-    }, 35);
+    }, 30);
   };
 
   const updatePosts = (post, isBot, isLoading) => {
     if (isBot) {
-      console.log(post);
       autoTypingBotResponse(post);
     } else {
       setPosts((prevState) => {
-        return [
-          ...prevState,
-          { type: isLoading ? "loading" : "user", post: post },
-        ];
+        return [...prevState, { type: isLoading ? "loading" : "user", post }];
       });
     }
   };
@@ -102,12 +103,11 @@ function App() {
                   src={
                     post.type === "bot" || post.type === "loading" ? bot : user
                   }
-                  alt=""
                 />
               </div>
               {post.type === "loading" ? (
                 <div className="loader">
-                  <img src={loadingIcon} alt="" />
+                  <img src={loadingIcon} />
                 </div>
               ) : (
                 <div className="post">{post.post}</div>
@@ -119,15 +119,15 @@ function App() {
       <footer>
         <input
           value={input}
-          type="text"
           className="composebar"
           autoFocus
-          placeholder="Ask anything..."
+          type="text"
+          placeholder="Ask Anything!"
           onChange={(e) => setInput(e.target.value)}
           onKeyUp={onKeyUp}
         />
         <div className="send-button" onClick={onSubmit}>
-          <img src={send} alt="" />
+          <img src={send} />
         </div>
       </footer>
     </main>
