@@ -31,14 +31,13 @@ app.post("/", async (req, res) => {
       frequency_penalty: 0.5,
       presence_penalty: 0,
     });
-
-    console.log("PASSED", req.body.input);
+    console.log("PASSED: ", req.body.input);
 
     res.status(200).send({
       bot: response.data.choices[0].text,
     });
   } catch (err) {
-    console.log("FAILED", req.body.input);
+    console.log("FAILED: ", req.body.input);
     console.error(err);
     res.status(500).send(err);
   }
